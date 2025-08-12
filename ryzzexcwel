@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Surprise!</title>
+<style>
+  html,body {
+    margin: 0; padding: 0;
+    height: 100%; width: 100%;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    max-width: 90%;
+    cursor: pointer;
+  }
+  #msg {
+    display: none;
+    color: red;
+    font-size: 5vw;
+    font-family: sans-serif;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <!-- Obrazek, w który klikasz -->
+  <img src="https://osmkolo.pl/wp-content/uploads/2024/09/11881_SEREK-WIEJSKI-150G_NOWY.png" alt="Kliknij mnie!">
+  
+  <!-- Napis na fullscreen -->
+  <div id="msg">💥 SIEMA MORDO 💥</div>
+
+<script>
+const img = document.getElementById("clickImage");
+const msg = document.getElementById("msg");
+
+img.addEventListener("click", async () => {
+  msg.style.display = "flex";
+  img.style.display = "none";
+  document.body.style.background = "black";
+  document.body.style.alignItems = "center";
+  document.body.style.justifyContent = "center";
+
+  try {
+    if (document.documentElement.requestFullscreen) {
+      await document.documentElement.requestFullscreen();
+    } else if (document.documentElement.webkitRequestFullscreen) {
+      document.documentElement.webkitRequestFullscreen();
+    }
+  } catch(e) {}
+});
+</script>
+</body>
+</html>
